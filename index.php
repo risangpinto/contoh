@@ -39,8 +39,8 @@
           <div>
                <h4>Cara 1</h4>
                <div class="satu">
-                    <a href="home">Home</a>
-                    <a href="profile">Profile</a>
+                    <a href="<?php echo $base_url ?>home">Home</a>
+                    <a href="<?php echo $base_url ?>profile">Profile</a>
 
                </div>
 
@@ -81,7 +81,9 @@
                //hentikan action click
                e.preventDefault();
 
-               var p = $(this).attr('href');
+               var p = $(this).attr('href'); 
+
+               p = p.replace('<?php echo $base_url ?>', '');
 
                var url = '<?php echo $base_url ?>/php/'+ p +'.php';
 
@@ -100,7 +102,7 @@
           $(window).on('hashchange', function(){
                var p = window.location.hash;
 
-               p = p.replace(/^#/, '');
+               p = p.replace('#', '');
 
                var url = '<?php echo $base_url ?>/php/'+ p +'.php';
 
